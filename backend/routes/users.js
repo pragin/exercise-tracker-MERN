@@ -14,7 +14,7 @@ router.route("/add").post((req, res) => {
 
   newUser
     .save()
-    .then(() => res.send("USer added!"))
-    .catch(err => res.statu(400).json("Error: " + err));
+    .then(() => res.json("USer added!"))
+    .catch(err => res.status(400).json("Error: " + err));
 });
 module.exports = router;
