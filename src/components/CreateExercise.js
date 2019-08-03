@@ -32,10 +32,6 @@ export default class CreateExercise extends Component {
         });
       }
     });
-    this.setState({
-      users: ["test user"],
-      username: "test user"
-    });
   }
 
   onChangeUsername(e) {

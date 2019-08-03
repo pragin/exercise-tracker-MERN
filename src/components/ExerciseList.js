@@ -1,31 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
+import Exercise from "./Exercise";
+//  import EditExercise from "./EditExercise";
 
-const Exercise = props => {
-  return (
-    <tr>
-      <td>{props.exercise.username}</td>
-      <td>{props.exercise.description}</td>
-      <td>{props.exercise.duration}</td>
-      <td>{props.exercise.date.substring(0, 10)}</td>
-      <td>
-        <Link to={"/edit/" + props.exercise._id}>edit</Link> |{" "}
-        <button onClick={() => props.deleteExercise(props.exercise._id)}>
-          delete
-        </button>
-      </td>
-    </tr>
-  );
-};
 export default class ExerciseList extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       exercises: []
     };
-
     this.deleteExercise = this.deleteExercise.bind(this);
   }
 
@@ -36,14 +20,14 @@ export default class ExerciseList extends Component {
         this.setState({
           exercises: res.data
         });
-        console.log(this.state.exercises);
+        // console.log(this.state.exercises);
       })
       .catch(err => console.log("Error: " + err));
   }
 
   deleteExercise(id) {
     axios
-      .delete("http:localhost:5000/exercises/" + id)
+      .delete("http://localhost:5000/exercises/" + id)
       .then(res => console.log(res.data));
 
     this.setState({
@@ -79,6 +63,11 @@ export default class ExerciseList extends Component {
 
           <tbody>{this.exeriseList()}</tbody>
         </table>
+
+        {/* <EditExercise
+          exercise={this.state.exercises[0]}
+          saveModalDetails={this.saveModalDetails}
+        /> */}
       </div>
     );
   }
