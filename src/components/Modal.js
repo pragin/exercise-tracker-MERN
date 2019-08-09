@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DatePicker from "react-datepicker";
 
 class Modal extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class Modal extends Component {
 
   onChangeDate(date) {
     this.setState({
-      date: date
+      date
     });
   }
 
@@ -128,11 +129,11 @@ class Modal extends Component {
                   <label htmlFor="date" className="col-form-label">
                     Date:
                   </label>
-                  <input
-                    type="text"
+                  <br />
+                  <DatePicker
                     className="form-control"
-                    id="date"
-                    value={this.state.date}
+                    dateFormat="dd/MM/yyyy"
+                    selected={Date.parse(this.state.date)}
                     onChange={this.onChangeDate}
                   />
                 </div>
